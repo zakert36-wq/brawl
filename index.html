@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brawl Shop</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at top left,#1d4ed8 0%,transparent 25%),
+radial-gradient(circle at bottom right,#7c3aed 0%,transparent 25%),
+#050816;
+min-height:100vh;
+padding:50px;
+color:white;
+overflow-x:hidden;
+}
+
+.glow{
+position:fixed;
+width:400px;
+height:400px;
+background:#2563eb;
+filter:blur(140px);
+opacity:.25;
+top:-120px;
+left:-120px;
+z-index:-1;
+}
+
+.glow2{
+position:fixed;
+width:350px;
+height:350px;
+background:#9333ea;
+filter:blur(140px);
+opacity:.2;
+bottom:-100px;
+right:-100px;
+z-index:-1;
+}
+
+.title{
+font-size:52px;
+font-weight:800;
+margin-bottom:45px;
+text-shadow:0 0 25px rgba(255,255,255,.2);
+}
+
+.card{
+max-width:450px;
+background:rgba(17,25,40,.92);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+overflow:hidden;
+box-shadow:
+0 0 40px rgba(0,0,0,.5),
+0 0 25px rgba(59,130,246,.15);
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.01);
+}
+
+.card img{
+width:100%;
+height:290px;
+object-fit:cover;
+}
+
+.content{
+padding:28px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 18px;
+background:linear-gradient(90deg,#3b82f6,#8b5cf6);
+border-radius:999px;
+font-size:14px;
+font-weight:700;
+margin-bottom:18px;
+}
+
+.name{
+font-size:32px;
+font-weight:800;
+margin-bottom:22px;
+line-height:1.2;
+}
+
+.info{
+line-height:1.9;
+color:#d6e0f5;
+font-size:17px;
+margin-bottom:28px;
+}
+
+.price{
+font-size:50px;
+font-weight:900;
+background:linear-gradient(90deg,#00ff99,#00ccff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:26px;
+}
+
+.buy-btn{
+display:block;
+width:100%;
+text-align:center;
+padding:18px;
+border-radius:18px;
+font-size:22px;
+font-weight:800;
+text-decoration:none;
+color:white;
+background:linear-gradient(90deg,#3b82f6,#8b5cf6,#ec4899);
+background-size:200% 200%;
+animation:gradient 4s ease infinite;
+box-shadow:
+0 10px 30px rgba(59,130,246,.35),
+0 0 25px rgba(139,92,246,.25);
+transition:.2s;
+}
+
+.buy-btn:hover{
+transform:scale(1.03);
+}
+
+@keyframes gradient{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.footer{
+margin-top:25px;
+color:#93a4c3;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<h1 class="title">🔥 Магазин аккаунтов Brawl Stars</h1>
+
+<div class="card">
+
+<img src="images/account.svg">
+
+<div class="content">
+
+<div class="badge">ТОП ЛОТ</div>
+
+<div class="name">🖤АКАУНТ БРАВЛ 2020 ГОДА♠️</div>
+
+<div class="info">
+Количество бойцов: <b>99</b><br>
+Рекорд трофеев: <b>52209</b><br>
+Легендарные персонажи: <b>13</b><br>
+Бесплатная смена ника: <b>Нет</b><br>
+Высший ранг: <b>Алмазная лига</b><br>
+Престиж: <b>Есть</b><br><br>
+
+САМЫЙ СОЧНЫЙ АККАУНТ С ПОЧТИ ВСЕМИ СТАРЫМИ БРАВЛ ПАССАМИ И КУЧЕЙ ОСТАЛЬНЫХ СКИНОВ.
+</div>
+
+<div class="price">200₽</div>
+
+<a class="buy-btn" href="https://t.me/lastlexore" target="_blank">
+КУПИТЬ АККАУНТ
+</a>
+
+<div class="footer">
+Связь: @lastlexore
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
