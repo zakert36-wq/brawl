@@ -1,125 +1,180 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Brawl Shop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial;
-    }
+<title>Brawl Shop</title>
 
-    body{
-      background:#0f172a;
-      color:white;
-      padding:20px;
-    }
+<style>
 
-    h1{
-      text-align:center;
-      margin-bottom:30px;
-      font-size:32px;
-    }
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial;
+    margin:0;
+    padding:20px;
+}
 
-    .products{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:20px;
-    }
+h1{
+    text-align:center;
+}
 
-    .card{
-      background:#1e293b;
-      border-radius:20px;
-      overflow:hidden;
-      transition:0.2s;
-      border:1px solid #334155;
-    }
+.admin{
+    background:#1e293b;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
 
-    .card:hover{
-      transform:scale(1.02);
-    }
+input{
+    width:100%;
+    margin-bottom:10px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+}
 
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
 
-    .info{
-      padding:15px;
-    }
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
 
-    .title{
-      font-size:24px;
-      font-weight:bold;
-      margin-bottom:10px;
-    }
+.card{
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
+}
 
-    .desc{
-      color:#cbd5e1;
-      margin-bottom:15px;
-    }
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
 
-    .price{
-      font-size:28px;
-      color:#22c55e;
-      font-weight:bold;
-      margin-bottom:15px;
-    }
+.info{
+    padding:15px;
+}
 
-    .buy{
-      width:100%;
-      padding:14px;
-      border:none;
-      border-radius:12px;
-      background:#3b82f6;
-      color:white;
-      font-size:18px;
-      cursor:pointer;
-      transition:0.2s;
-    }
+.price{
+    color:#22c55e;
+    font-size:28px;
+    font-weight:bold;
+}
 
-    .buy:hover{
-      background:#2563eb;
-    }
-  </style>
+</style>
 </head>
-
 <body>
 
-  <h1>🔥 Магазин аккаунтов Brawl Stars</h1>
+<h1>🔥 Магазин аккаунтов Brawl Stars</h1>
 
-  <div class="products">
+<div class="admin">
 
-    <div class="card">
-      <img src="https://wallpapercave.com/wp/wp7252578.jpg">
+<input type="text" id="title" placeholder="Название">
 
-      <div class="info">
-        <div class="title">Топ олд аккаунт</div>
+<input type="text" id="desc" placeholder="Описание">
 
-        <div class="desc">
-          100к кубков, редкие скины, много бравлеров
+<input type="number" id="price" placeholder="Цена">
+
+<input type="file" id="image">
+
+<button onclick="addProduct()">
+Добавить товар
+</button>
+
+</div>
+
+<div class="products" id="products"></div>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem('products')) || [];
+
+function saveProducts(){
+    localStorage.setItem('products', JSON.stringify(products));
+}
+
+function renderProducts(){
+
+    const container = document.getElementById('products');
+
+    container.innerHTML = '';
+
+    products.forEach(product => {
+
+        container.innerHTML += `
+        
+        <div class="card">
+
+            <img src="${product.image}">
+
+            <div class="info">
+
+                <h2>${product.title}</h2>
+
+                <p>${product.desc}</p>
+
+                <div class="price">${product.price}₽</div>
+
+                <br>
+
+                <button onclick="window.location.href='https://t.me/shopbshalava_bot'">
+                Купить
+                </button>
+
+            </div>
+
         </div>
 
-        <div class="price">200₽</div>
+        `;
+    });
+}
 
-        <button class="buy" onclick="buyProduct()">
-          Купить
-        </button>
-      </div>
-    </div>
+function addProduct(){
 
-  </div>
+    const title = document.getElementById('title').value;
+    const desc = document.getElementById('desc').value;
+    const price = document.getElementById('price').value;
 
-  <script>
-    function buyProduct(){
-      window.location.href = "https://t.me/shopbshalava_bot";
-    }
-  </script>
+    const file = document.getElementById('image').files[0];
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        const product = {
+            title,
+            desc,
+            price,
+            image:e.target.result
+        };
+
+        products.push(product);
+
+        saveProducts();
+
+        renderProducts();
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+renderProducts();
+
+</script>
 
 </body>
 </html>
